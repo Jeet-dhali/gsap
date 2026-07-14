@@ -2,15 +2,21 @@
 
 @font-face {
   font-family: rf;
-  src: url("../public/fonts/Retro\ Floral.ttf");
+  src: url("/fonts/Retro\ Floral.ttf");
 }
 
 @font-face {
   font-family: md;
-  src: url("../public/fonts/modernline.otf");
+  src: url("/fonts/modernline.otf");
 }
 
 @font-face {
   font-family: mdb;
-  src: url("../public/fonts/modernline\ bold.otf");
+  src: url("/fonts/modernline\ bold.otf");
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  
 }

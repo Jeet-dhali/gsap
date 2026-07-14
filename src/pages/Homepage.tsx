@@ -1,9 +1,15 @@
 import Herosection from "../components/Herosection"
+import Projects from "../components/Projects"
 
 
 const Homepage = () => {
   return (
-    <Herosection />
+    <>
+        <div>
+            <Herosection />
+            <Projects />
+        </div>
+    </>
   )
 }
 

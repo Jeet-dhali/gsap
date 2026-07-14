@@ -9,6 +9,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 const Herosection = () => {
   
+  const containerRef = useRef(null)
   const heroScreenDivRef = useRef(null);
   const aboutScreenDivRef = useRef(null);
 
@@ -151,45 +152,44 @@ const Herosection = () => {
   })
 
   return (
-    <div className="overflow-hidden relative">
-      <div ref={aboutScreenDivRef} className="about-screen-div w-screen h-screen absolute z-1 flex justify-center" >
-          <div className="about-text h-[30vh] w-[80vw] text-[48px] text-black-900 mt-30">
-            I'm Jeet Dhali, a frontend developer focused on building immersive digital experiences. I combine clean design, smooth interactions, and modern web technologies to create websites that are fast, responsive, and memorable. I'm always learning, experimenting, and striving to turn ambitious ideas into polished products.
-          </div>
-      </div>
-      <div ref={heroScreenDivRef} className="hero-screen-div absolute w-screen h-screen flex items-center justify-center bg-[#F5F4EB]">
-        
-        <div className="h-[80vh] w-[80vw] flex flex-col leading-[0.9] mt-30">
-          <div className="front text-[12vw] font-[rf] text-left text-[#eea813] flex">
-            <div className="f">F</div>
-            <div className="r">R</div>
-            <div className="o">O</div>
-            <div className="n">N</div>
-            <div className="t">T</div>
-            <div className="e">E</div>
-            <div className="n2">N</div>
-            <div className="d">D</div>
-          </div>
-          <div className="text-[12vw] font-[rf] text-right text-[#eea813] flex justify-end">
-            <div className="l1">D</div>
-            <div className="l2">E</div>
-            <div className="l3">V</div>
-            <div className="l4">E</div>
-            <div className="l5">L</div>
-            <div className="l6">O</div>
-            <div className="l7">P</div>
-            <div className="l8">E</div>
-            <div className="l9">R</div>
-          </div>
-          <div className="subheading text-[4vw] font-[md] text-left mt-5">
-            Design and Create
-          </div>
-        </div>
-      </div>
-      <div className="h-[500vh] w-full bg-black">
+    
+      <div ref = {containerRef} className="w-screen h-screen relative">
+        <div ref={heroScreenDivRef} className="hero-screen-div absolute w-screen h-screen flex items-center justify-center bg-[#F5F4EB]">
 
+          <div className="h-[80vh] w-[80vw] flex flex-col leading-[0.9] mt-30">
+            <div className="front text-[12vw] font-[rf] text-left text-[#eea813] flex min-w-0">
+              <div className="f">F</div>
+              <div className="r">R</div>
+              <div className="o">O</div>
+              <div className="n">N</div>
+              <div className="t">T</div>
+              <div className="e">E</div>
+              <div className="n2">N</div>
+              <div className="d">D</div>
+            </div>
+            <div className="text-[12vw] font-[rf] text-right text-[#eea813] flex justify-end min-w-0">
+              <div className="l1">D</div>
+              <div className="l2">E</div>
+              <div className="l3">V</div>
+              <div className="l4">E</div>
+              <div className="l5">L</div>
+              <div className="l6">O</div>
+              <div className="l7">P</div>
+              <div className="l8">E</div>
+              <div className="l9">R</div>
+            </div>
+            <div className="subheading text-[4vw] font-[md] text-left mt-5">
+              Design and Create
+            </div>
+          </div>
         </div>
-    </div>
+        <div ref={aboutScreenDivRef} className="about-screen-div absolute w-screen h-screen z-1 flex justify-center" >
+            <div className="about-text h-[30vh] w-[80vw] text-[48px] text-black-900 mt-30">
+              I'm Jeet Dhali, a frontend developer focused on building immersive digital experiences. I combine clean design, smooth interactions, and modern web technologies to create websites that are fast, responsive, and memorable. I'm always learning, experimenting, and striving to turn ambitious ideas into polished products.
+            </div>
+        </div>
+        
+      </div>
   )
 }
 
