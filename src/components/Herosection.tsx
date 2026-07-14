@@ -2,6 +2,7 @@ import { useGSAP } from "@gsap/react"
 import gsap from "gsap"
 import { useRef } from "react"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
+import SplitType from "split-type"
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -12,6 +13,9 @@ const Herosection = () => {
   const aboutScreenDivRef = useRef(null);
 
   useGSAP(() => {
+    const split = new SplitType(".about-text", {
+      types: "words"
+    });
     const tl2 = gsap.timeline({
       scrollTrigger: {
         trigger: aboutScreenDivRef.current,
@@ -21,6 +25,11 @@ const Herosection = () => {
         pin: true,
       }
     });
+
+    tl2.from(split.words, {
+      opacity: 0,
+      stagger: 0.04
+    }, 0.2)
 
     const tl = gsap.timeline({
       scrollTrigger: {
@@ -142,10 +151,10 @@ const Herosection = () => {
   })
 
   return (
-    <div className="overflow-x-hidden relative">
-      <div ref={aboutScreenDivRef} className="absolute z-1" >
-          <div className="font-[rf] text-4xl">
-            about me
+    <div className="overflow-hidden relative">
+      <div ref={aboutScreenDivRef} className="about-screen-div w-screen h-screen absolute z-1 flex justify-center" >
+          <div className="about-text h-[30vh] w-[80vw] text-[48px] text-black-900 mt-30">
+            I'm Jeet Dhali, a frontend developer focused on building immersive digital experiences. I combine clean design, smooth interactions, and modern web technologies to create websites that are fast, responsive, and memorable. I'm always learning, experimenting, and striving to turn ambitious ideas into polished products.
           </div>
       </div>
       <div ref={heroScreenDivRef} className="hero-screen-div absolute w-screen h-screen flex items-center justify-center bg-[#F5F4EB]">
@@ -177,7 +186,7 @@ const Herosection = () => {
           </div>
         </div>
       </div>
-      <div className="h-500 w-full bg-black">
+      <div className="h-[500vh] w-full bg-black">
 
         </div>
     </div>
