@@ -1,0 +1,16 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: rf;
+  src: url("../public/fonts/Retro\ Floral.ttf");
+}
+
+@font-face {
+  font-family: md;
+  src: url("../public/fonts/modernline.otf");
+}
+
+@font-face {
+  font-family: mdb;
+  src: url("../public/fonts/modernline\ bold.otf");
+}
