@@ -17,24 +17,13 @@ const Herosection = () => {
     const split = new SplitType(".about-text", {
       types: "words"
     });
-    const tl2 = gsap.timeline({
-      scrollTrigger: {
-        trigger: aboutScreenDivRef.current,
-        start: "top 0%",
-        end: "+=1000",
-        scrub: 1,
-        pin: true,
-      }
-    });
+    
 
-    tl2.from(split.words, {
-      opacity: 0,
-      stagger: 0.04
-    }, 0.2)
+    
 
     const tl = gsap.timeline({
       scrollTrigger: {
-        trigger: heroScreenDivRef.current,
+        trigger: containerRef.current,
         start: "top 0%",
         end: "+=1000",
         scrub: 1,
@@ -149,6 +138,10 @@ const Herosection = () => {
       opacity: 0,
       duration: 0.8
     }, 0);
+    tl.from(split.words, {
+      opacity: 0,
+      stagger: 0.04
+    }, 0.2);
   })
 
   return (
