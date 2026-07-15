@@ -1,5 +1,5 @@
 import { useGSAP } from "@gsap/react"
-import { useRef, useState } from "react"
+import { useRef, useState, useEffect } from "react"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import SplitType from "split-type"
@@ -16,25 +16,42 @@ const Projects = () => {
   const projectsCardRef = useRef<HTMLDivElement | null>(null)
   const tl2 = useRef<GSAPTimeline | null>(null)
   const [isOpen, setIsOpen] = useState(false)
+
+  useEffect(() => {
+    const handleOutsideClick = (e: MouseEvent) => {
+      const card = projectsCardRef.current!;
+      if (
+        projectsCardRef.current &&
+        !projectsCardRef.current.contains(e.target as Node)
+      ) {
+      tl2.current = gsap.timeline()
+      tl2.current.to(projectsCardRef.current, {
+        y: -500,
+        scale: .99,
+        transformOrigin: "center center"
+      }, 0)
+      tl2.current.to(card, {
+        scale: 1
+      }, 0);
+      tl2.current.to(projectsCardRef.current!.parentElement, {
+        zIndex: 30
+      }, .1)
+      tl2.current.to(projectsCardRef.current, {
+        y: 0,
+      }, .2)
+      setIsOpen(false)
+      }
+    };
+
+    document.addEventListener("mousedown", handleOutsideClick);
+
+    return () => {
+      document.removeEventListener("mousedown", handleOutsideClick);
+    };
+  }, []);
   
 
   useGSAP(() => {
-
-    //project-card animation timeline
-    tl2.current = gsap.timeline({paused:true})
-    tl2.current.to(projectsCardRef.current, {
-      y: -500,
-      scale: .99,
-      transformOrigin: "center center"
-    }, 0)
-    tl2.current.to(projectsCardRef.current!.parentElement, {
-      zIndex: 100
-    }, .1)
-    tl2.current.to(projectsCardRef.current, {
-      y: -10,
-      scale: 1.5,
-      transformOrigin: "center center"
-    }, .2)
 
     const split = new SplitType(".projects-text", {
         types: "chars"
