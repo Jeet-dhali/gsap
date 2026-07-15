@@ -18,9 +18,6 @@ const Herosection = () => {
       types: "words"
     });
     
-
-    
-
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: containerRef.current,
@@ -30,6 +27,7 @@ const Herosection = () => {
         pin: true,
       }
     });
+    //frontend text
     tl.to(".f", {
       x: "-110vw",
       opacity: 0,
@@ -78,7 +76,7 @@ const Herosection = () => {
       duration: 1
     }, 0);
 
-    // DEVELOPER
+    //developer text
 
     tl.to(".l1", {
       x: "-110vw",
@@ -134,15 +132,19 @@ const Herosection = () => {
       duration: 1.8
     }, 0);
 
+    //subheading
     tl.to(".subheading", {
       opacity: 0,
       duration: 0.8
     }, 0);
+    //about text
     tl.from(split.words, {
       opacity: 0,
       stagger: 0.04
     }, 0.2);
-  })
+    
+  });
+    
 
   return (
     
